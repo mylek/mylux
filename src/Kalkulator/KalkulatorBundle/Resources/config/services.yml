@@ -1,0 +1,5 @@
+services:
+    kalkulator_kalkulator.twig.extension.kalkulator:
+        class: Kalkulator\KalkulatorBundle\Twig\Extension\KalkulatorExtension
+        tags:
+            - { name: twig.extension }
