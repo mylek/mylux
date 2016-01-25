@@ -32,27 +32,15 @@ class UsersFixtures extends AbstractFixture implements OrderedFixtureInterface, 
         
         $usersList = array(
             array(
-                'nick' => 'adas_no',
-                'email' => 'anowak@eduweb.pl',
-                'password' => '123',
+                'nick' => 'user',
+                'email' => 'mylek89k@gmail.com',
+                'password' => 'user',
                 'role' => 'ROLE_USER'
             ),
             array(
-                'nick' => 'kowal',
-                'email' => 'j.kowalski@eduweb.pl',
-                'password' => '123',
-                'role' => 'ROLE_EDITOR'
-            ),
-            array(
-                'nick' => 'antkow',
-                'email' => 'a.nowakowski@eduweb.pl',
-                'password' => '123',
-                'role' => 'ROLE_ADMIN'
-            ),
-            array(
-                'nick' => 'macq',
-                'email' => 'macq@eduweb.pl',
-                'password' => '123',
+                'nick' => 'admin',
+                'email' => 'mylekspamk@gmail.com',
+                'password' => 'admin',
                 'role' => 'ROLE_SUPER_ADMIN'
             ),
         );

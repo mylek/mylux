@@ -6,6 +6,7 @@
     <title>INSPINIA | Login</title>
     <link href="{{ asset('bundles/kalkulatorkalkulator/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('bundles/kalkulatorkalkulator/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
+    <link href="{{ asset('bundles/kalkulatorkalkulator/css/plugins/iCheck/custom.css') }}" rel="stylesheet">
 
     <link href="{{ asset('bundles/kalkulatorkalkulator/css/animate.css') }}" rel="stylesheet">
     <link href="{{ asset('bundles/kalkulatorkalkulator/css/style.css') }}" rel="stylesheet">
@@ -15,7 +16,19 @@
     <!-- Mainly scripts -->
     <script src="{{ asset('bundles/kalkulatorkalkulator/js/jquery-2.1.1.js') }}"></script>
     <script src="{{ asset('bundles/kalkulatorkalkulator/js/bootstrap.min.js') }}"></script>
-
+    <script src="{{ asset('bundles/kalkulatorkalkulator/js/plugins/metisMenu/jquery.metisMenu.js') }}"></script>
+    <script src="{{ asset('bundles/kalkulatorkalkulator/js/plugins/slimscroll/jquery.slimscroll.min.js') }}"></script>
+    <script src="{{ asset('bundles/kalkulatorkalkulator/js/inspinia.js') }}"></script>
+    <script src="{{ asset('bundles/kalkulatorkalkulator/js/plugins/pace/pace.min.js') }}"></script>
+    <script src="{{ asset('bundles/kalkulatorkalkulator/js/plugins/iCheck/icheck.min.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+            });
+        });
+    </script>
 </body>
 
 

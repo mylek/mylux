@@ -32,16 +32,15 @@ class Produkt {
     /**
      * @ORM\Column(type="smallint", length=4)
      * 
-     * @Assert\NotBlank
-     * @Assert\Length(
-     *      max = 9999
+     * @Assert\Range(
+     *      max = 999,
+     *      min = 0
      * )
      */
     private $porcja;
     /**
-     * @ORM\Column(type="decimal", precision=3, scale=2)
+     * @ORM\Column(type="decimal", precision=5, scale=2)
      * 
-     * @Assert\NotBlank
      * @Assert\Range(
      *      max = 999,
      *      min = 0
@@ -49,7 +48,8 @@ class Produkt {
      */
     private $cena;
     /**
-     * @ORM\Column(type="decimal", precision=3, scale=2)
+     * @ORM\Column(type="decimal", precision=5, scale=2)
+     * @Assert\NotBlank
      * 
      * @Assert\Range(
      *      max = 999,
@@ -58,7 +58,7 @@ class Produkt {
      */
     private $kalorii;
     /**
-     * @ORM\Column(type="decimal", precision=3, scale=2)
+     * @ORM\Column(type="decimal", precision=5, scale=2)
      * 
      * @Assert\NotBlank
      * @Assert\Range(
@@ -68,7 +68,7 @@ class Produkt {
      */
     private $bialka;
     /**
-     * @ORM\Column(type="decimal", precision=3, scale=2)
+     * @ORM\Column(type="decimal", precision=5, scale=2)
      * 
      * @Assert\NotBlank
      * @Assert\Range(
@@ -78,7 +78,7 @@ class Produkt {
      */
     private $wegle;
     /**
-     * @ORM\Column(type="decimal", precision=3, scale=2)
+     * @ORM\Column(type="decimal", precision=5, scale=2)
      * 
      * @Assert\NotBlank
      * @Assert\Range(

@@ -30,5 +30,12 @@ security:
                 default_target_path: kal_produkty_lista
             logout:
                 path: _logout
-                target: kal_produkty_lista
+                target: kal_login
+            remember_me:
+                key: '%secret%'
+                lifetime: 604800 # 1 week in seconds
+                path: /
+                domain: ~
+    access_control:
+        - { path: ^/kalkulator, roles: ROLE_USER }
             
