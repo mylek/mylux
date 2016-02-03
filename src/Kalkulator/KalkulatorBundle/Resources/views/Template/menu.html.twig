@@ -16,16 +16,22 @@
             IN+
         </div>
     </li>
-    {% for name,submenu in menu %}
-        {% if app.request.get('_route') in submenu %}
+    {% for name,menu_row in menu %}
+        {% if app.request.get('_route') in menu_row.submenu %}
             <li class="active">
         {% else %}
             <li>
         {% endif %}
-            <a href="{{ path(submenu|first) }}"><i class="fa fa-th-large"></i> <span class="nav-label">{{ name }}</span> <span class="fa arrow"></span></a>
-            {% if submenu|length %}
+            <a href="{{ path(menu_row.submenu|first) }}">
+                <i class="{{ menu_row.class }}"></i> 
+                <span class="nav-label">{{ name }}</span>
+                {% if menu_row.submenu|length > 1 %}
+                    <span class="fa arrow"></span>
+                {% endif %}
+            </a>
+            {% if menu_row.submenu|length > 1 %}
                 <ul class="nav nav-second-level collapse">
-                {% for nameSub,route in submenu %}
+                {% for nameSub,route in menu_row.submenu %}
                     {% if app.request.get('_route') == route %}
                         <li class="active">
                     {% else %}

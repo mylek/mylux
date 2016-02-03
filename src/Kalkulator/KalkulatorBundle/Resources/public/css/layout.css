@@ -5,3 +5,12 @@
     padding: 10px 10px 0px;
     margin-bottom: -15px;
 }
+.dodaj-posilek-form input {
+    text-align: center;
+}
+.dodaj-posilek-form .chosen-select {
+    width: 200px;
+}
+.dodaj-posilek-form .suma-group .col-sm-1.control-label {
+    width: 5%;
+}

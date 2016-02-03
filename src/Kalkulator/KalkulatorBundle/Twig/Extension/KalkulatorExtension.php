@@ -21,9 +21,18 @@ class KalkulatorExtension extends \Twig_Extension{
     
     public function menu() {
         $menu = array(
+            'Dodaj posiłek' => array(
+                'class' => 'fa fa-plus-square',
+                'submenu' =>   array(
+                        'Dodaj posiłek' => 'kal_danie_dodaj'
+                    )
+            ),
             'Produkty' => array(
-                'Lista produktów' => 'kal_produkty_lista',
-                'Dodaj produkt' => 'kal_produkty_dodaj',
+                'class' => 'fa fa-th-large',
+                'submenu' =>   array(
+                        'Lista produktów' => 'kal_produkty_lista',
+                        'Dodaj produkt' => 'kal_produkty_dodaj',
+                    )
             ),
         );
         

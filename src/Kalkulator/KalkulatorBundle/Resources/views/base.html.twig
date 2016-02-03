@@ -12,6 +12,7 @@
     <link href="{{ asset('bundles/kalkulatorkalkulator/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('bundles/kalkulatorkalkulator/css/layout.css') }}" rel="stylesheet">
     <link href="{{ asset('bundles/kalkulatorkalkulator/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css') }}" rel="stylesheet">
+    {% block styleImport %}{% endblock %}
 </head>
 <body>
     <div id="wrapper">
@@ -67,11 +68,12 @@
         </div>
     </div>
     </div>
-    <!-- Mainly scripts -->
+    <!-- Mainly scripts -->    
     <script src="{{ asset('bundles/kalkulatorkalkulator/js/jquery-2.1.1.js') }}"></script>
     <script src="{{ asset('bundles/kalkulatorkalkulator/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('bundles/kalkulatorkalkulator/js/plugins/metisMenu/jquery.metisMenu.js') }}"></script>
     <script src="{{ asset('bundles/kalkulatorkalkulator/js/plugins/slimscroll/jquery.slimscroll.min.js') }}"></script>
+    <script src="{{ asset('bundles/kalkulatorkalkulator/js/funkcje.js') }}"></script>
     <!-- Custom and plugin javascript -->
     <script src="{{ asset('bundles/kalkulatorkalkulator/js/inspinia.js') }}"></script>
     <script src="{{ asset('bundles/kalkulatorkalkulator/js/plugins/pace/pace.min.js') }}"></script>
@@ -85,5 +87,6 @@
                 });
             });
         </script>
+    {% block scriptImport %}{% endblock %}
 </body>
 </html>

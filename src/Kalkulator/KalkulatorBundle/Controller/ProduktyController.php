@@ -28,7 +28,6 @@ class ProduktyController extends Controller {
     */
     public function listaAction($page){
         $Repo = $this->getDoctrine()->getRepository('KalkulatorKalkulatorBundle:Produkt');
-        //$rows = $Repo->findAll(array(), array('id' => 'desc'));
         
         $qb = $Repo->getQueryBuilder(array(
             'status' => 'aktywne',
