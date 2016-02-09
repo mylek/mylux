@@ -12,8 +12,7 @@
                 keyboardNavigation: false,
                 forceParse: false,
                 calendarWeeks: true,
-                autoclose: true,
-		dateFormat: 'Y-m-d'
+                autoclose: true
             });
             $('.clockpicker').clockpicker();
             $('.chosen-select').chosen();

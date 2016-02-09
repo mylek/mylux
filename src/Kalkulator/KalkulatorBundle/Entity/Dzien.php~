@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Kalkulator\KalkulatorBundle\Repository\DzienRepository")
  * @ORM\Table(name="dzien")
  */
 class Dzien {
@@ -18,28 +19,27 @@ class Dzien {
     private $id;
     
     /** 
-     * @ORM\Column(type="date") 
+     * @ORM\Column(type="datetime") 
      */
     private $data;
     
     /**
-     * @ORM\Column(type="smallint", length=4)
+     * @ORM\ManyToOne(
+     *      targetEntity = "Common\UserBundle\Entity\User"
+     * )
      * 
-     * @Assert\NotBlank
-     * @Assert\Length(
-     *      max = 9999
+     * @ORM\JoinColumn(
+     *      name = "user_id",
+     *      referencedColumnName = "id",
+     *	    onDelete = "CASCADE"	
      * )
      */
-    private $godzina;
+    private $user;
     
-    /**
-     * @ORM\ManyToOne(
-     *      targetEntity = "Danie"
-     * )
-     * @ORM\JoinColumn(
-     *      name = "danie_id",
-     *      referencedColumnName = "id",
-     *      onDelete = "SET NULL"
+     /**
+     * @ORM\OneToMany(
+     *      targetEntity = "Danie",
+     *      mappedBy = "dzien"
      * )
      */
     private $dania;
@@ -78,45 +78,73 @@ class Dzien {
     }
 
     /**
-     * Set godzina
+     * Set user
      *
-     * @param integer $godzina
+     * @param \Common\UserBundle\Entity\User $user
      * @return Dzien
      */
-    public function setGodzina($godzina)
+    public function setUser(\Common\UserBundle\Entity\User $user = null)
     {
-        $this->godzina = $godzina;
+        $this->user = $user;
 
         return $this;
     }
 
     /**
-     * Get godzina
+     * Get user
      *
-     * @return integer 
+     * @return \Common\UserBundle\Entity\User 
      */
-    public function getGodzina()
+    public function getUser()
     {
-        return $this->godzina;
+        return $this->user;
     }
 
     /**
-     * Set dania
+     * @ORM\PrePersist
+     * @ORM\PreUpdate
+     */
+    public function preSave(){
+        
+        if(null == $this->data){
+            $this->data = new \DateTime();
+        }
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->dania = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add dania
      *
      * @param \Kalkulator\KalkulatorBundle\Entity\Danie $dania
      * @return Dzien
      */
-    public function setDania(\Kalkulator\KalkulatorBundle\Entity\Danie $dania = null)
+    public function addDanium(\Kalkulator\KalkulatorBundle\Entity\Danie $dania)
     {
-        $this->dania = $dania;
+        $this->dania[] = $dania;
 
         return $this;
+    }
+
+    /**
+     * Remove dania
+     *
+     * @param \Kalkulator\KalkulatorBundle\Entity\Danie $dania
+     */
+    public function removeDanium(\Kalkulator\KalkulatorBundle\Entity\Danie $dania)
+    {
+        $this->dania->removeElement($dania);
     }
 
     /**
      * Get dania
      *
-     * @return \Kalkulator\KalkulatorBundle\Entity\Danie 
+     * @return \Doctrine\Common\Collections\Collection 
      */
     public function getDania()
     {

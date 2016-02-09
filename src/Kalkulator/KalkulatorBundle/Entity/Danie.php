@@ -40,6 +40,20 @@ class Danie {
      */
     
     private $produkty;
+    
+    /**
+     * @ORM\ManyToOne(
+     *      targetEntity = "Dzien",
+     *	    inversedBy = "dania"
+     * )
+     * @ORM\JoinColumn(
+     *      name = "dzien_id",
+     *      referencedColumnName = "id",
+     *      onDelete = "CASCADE"
+     * )
+     */
+
+     private $dzien_id;
 
     /**
      * Get id
@@ -95,5 +109,51 @@ class Danie {
     public function getProdukty()
     {
         return $this->produkty;
+    }
+
+    /**
+     * Set dzien
+     *
+     * @param \Kalkulator\KalkulatorBundle\Entity\Dzien $dzien
+     * @return Danie
+     */
+    public function setDzien(\Kalkulator\KalkulatorBundle\Entity\Dzien $dzien = null)
+    {
+        $this->dzien = $dzien;
+
+        return $this;
+    }
+
+    /**
+     * Get dzien
+     *
+     * @return \Kalkulator\KalkulatorBundle\Entity\Dzien 
+     */
+    public function getDzien()
+    {
+        return $this->dzien;
+    }
+
+    /**
+     * Set dzien_id
+     *
+     * @param \Kalkulator\KalkulatorBundle\Entity\Dzien $dzienId
+     * @return Danie
+     */
+    public function setDzienId(\Kalkulator\KalkulatorBundle\Entity\Dzien $dzienId = null)
+    {
+        $this->dzien_id = $dzienId;
+
+        return $this;
+    }
+
+    /**
+     * Get dzien_id
+     *
+     * @return \Kalkulator\KalkulatorBundle\Entity\Dzien 
+     */
+    public function getDzienId()
+    {
+        return $this->dzien_id;
     }
 }
