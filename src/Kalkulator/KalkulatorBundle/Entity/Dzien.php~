@@ -39,7 +39,7 @@ class Dzien {
      /**
      * @ORM\OneToMany(
      *      targetEntity = "Danie",
-     *      mappedBy = "dzien"
+     *      mappedBy = "dzien_id"
      * )
      */
     private $dania;
@@ -149,5 +149,9 @@ class Dzien {
     public function getDania()
     {
         return $this->dania;
+    }
+
+    public function removeAllDania() {
+	$this->dania = array();
     }
 }

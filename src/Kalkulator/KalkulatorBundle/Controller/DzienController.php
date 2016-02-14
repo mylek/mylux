@@ -18,23 +18,34 @@ class DzienController extends Controller {
     /**
      * @Route(
      *      "/{dzien}",
-     *      name="kal_dzien_dodaj"
+     *      name="kal_dzien_dodaj",
+     *      defaults={"dzien" = "now"}
      * )
      * @Template
      */
     public function dzienAction($dzien) {
-	if(!empty($dzien)) {
-		$dzien = new \DateTime($dzien);
-	} else {
-		$dzien = new \DateTime('now');
+
+	// jesli sa cookie to ustawia date
+	if('now' == $dzien) {
+		$request = Request::createFromGlobals();
+		$data = $request->cookies->get('dzien');
+		if(!empty($data)) {
+			$dzien = $data;		
+		}
 	}
 
-	$DzienRepository = $this->getDoctrine()->getRepository('KalkulatorKalkulatorBundle:Dzien');
-	$dane = $DzienRepository->getDzien($dzien);
+	$dzien = new \DateTime($dzien);	
 
-	echo '<pre>';
-	print_r($dane);
-	die;
-        return true;
+	$DzienRepository = $this->getDoctrine()->getRepository('KalkulatorKalkulatorBundle:Danie');
+	$dane = $DzienRepository->getDzien($dzien);
+	$suma = $DzienRepository->getSumaDzien($dzien);
+	
+	//echo '<pre>';
+	//print_r($dane);
+
+        return array(
+		'dzien' => $dane,
+		'suma' => $suma
+	);
     }
 }

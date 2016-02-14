@@ -84,6 +84,7 @@ class KalkulatorExtension extends \Twig_Extension{
 		// pobiera sume z wybranego dnia
 		$DzienRepository = $this->doctrine->getRepository('KalkulatorKalkulatorBundle:Danie');
 		$suma = $DzienRepository->getSumaDzien($data_wybrana);
+		print_r($suma);
 
 		
         

@@ -8,12 +8,8 @@
     <script>
         $(document).ready(function () {
             $('#dzien .input-group.date').datepicker({
-                todayBtn: "linked",
-                keyboardNavigation: false,
-                forceParse: false,
-                calendarWeeks: true,
-                autoclose: true,
-		dateFormat: 'Y-m-d'
+
+		format: 'yyyy-mm-dd'
             });
             $('.clockpicker').clockpicker();
             $('.chosen-select').chosen();
@@ -68,7 +64,8 @@
                 <label for="data" class="col-sm-2 control-label">Data posiłku</label>
                 <div class="col-sm-2" id="dzien">
                     <div class="input-group date">
-                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="" name="data">
+                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+			<input type="text" class="form-control" value="{{ dzien }}" name="data">
                     </div>
                 </div>
                 <div class="col-sm-2">
@@ -76,12 +73,41 @@
                         <span class="input-group-addon">
                             <span class="fa fa-clock-o"></span>
                         </span>
-                        <input type="text" name="time" class="form-control" value="09:30" >
+                        <input type="text" name="time" class="form-control" value="{{ czas }}" >
                     </div>
                 </div>
             </div>
             <div class="hr-line-dashed"></div>
             <div>
+		{% if dania is defined %}
+		{% if dania is not empty %}
+			{% for danie in dania %}
+				<div class="form-group ">
+				    <label for="data" class="col-sm-2 control-label">Wybierz produkt</label>
+				    <div class="col-sm-2">
+				        <div class="input-group">
+				            <select class="chosen-select" name="produkt[]" tabindex="2">
+				                <option value="0"> -- wybierz --- </option>
+				                {% for produkt in produkty %}
+				                    <option {% if danie.produkty.id == produkt.id %}selected{% endif %} value="{{ produkt.id }}">{{ produkt.nazwa }}</option>
+				                {% endfor %}
+				            </select>
+				        </div>
+				    </div>
+				    <div class="col-sm-2">
+				        <label for="data" class="col-sm-5 control-label">Gram</label>
+				        <div class="input-group col-sm-4">
+				            <input type="text" name="gram[]" class="form-control jq-sug-wag" value="{{ danie.gram }}" >
+				            <input type="hidden" class="jq-kalorie" value="{{ danie.produkty.kalorii }}">
+				            <input type="hidden" class="jq-bialko" value="{{ danie.produkty.bialka }}">
+				            <input type="hidden" class="jq-wegle" value="{{ danie.produkty.wegle }}">
+				            <input type="hidden" class="jq-tluszcze" value="{{ danie.produkty.tluszcze }}">
+				        </div>
+				    </div>
+				</div>
+			{% endfor %}
+		{% endif %}
+		{% endif %}
                 <div class="form-group ">
                     <label for="data" class="col-sm-2 control-label">Wybierz produkt</label>
                     <div class="col-sm-2">

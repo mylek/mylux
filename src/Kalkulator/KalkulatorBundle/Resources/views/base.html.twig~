@@ -37,6 +37,16 @@
     </div>
     <div class="row wrapper border-bottom white-bg page-heading">
 	{{ kalkulator_suma_dzien() }}
+	<div class="col-lg-10">
+		<div class="col-lg-3 m-l-n">
+			<select class="form-control m-b" >
+		            <option>option 1</option>
+		            <option>option 2</option>
+		            <option>option 3</option>
+		            <option>option 4</option>
+		        </select>
+		</div>
+	</div>
         <div class="col-lg-10">
             <h2>Basic Form</h2>
             <ol class="breadcrumb">

@@ -5,7 +5,6 @@ function Danie() {
     this.init = function () {
         var _this = this;
         $(document).on('change', _this.select, function () {
-		_this.countProduct();
             var idProduct = $(this).val();
             var conInfo = $(this).parent().parent().parent();
             if (idProduct != 0 && idProduct != '') {
