@@ -12,17 +12,17 @@ class DanieRepository extends EntityRepository {
 		$do = $data->format('Y-m-d 23:59:59');
 		$qb = $this->createQueryBuilder('d')
 		                ->select('
-				 SUM((p.bialka * 100) / d.gram) AS bialka,
-				 SUM((p.kalorii * 100) / d.gram) AS kalorii,
-				 SUM((p.wegle * 100) / d.gram) AS wegle,
-				 SUM((p.tluszcze * 100) / d.gram) AS tluszcze,
-				 SUM((p.cena * 100) / d.gram) AS cena')
+				 SUM((d.gram / 100) * p.bialka) AS bialka,
+				 SUM((d.gram / 100) * p.kalorii) AS kalorii,
+				 SUM((d.gram / 100) / p.wegle) AS wegle,
+				 SUM((d.gram / 100 / p.tluszcze) AS tluszcze,
+				 SUM((d.gram / 100) / p.cena) AS cena')
 		                ->join('d.dzien_id', 'da')
 				->leftJoin('d.produkty', 'p');
 		$qb->where('da.data >= :od AND da.data <= :do')
 		                ->setParameter('od', $od)
 				->setParameter('do', $do);
-		$res = $qb->getQuery()->getSingleResult()();
+		$res = $qb->getQuery()->getSingleResult();
 		return $res;
 	}
     
@@ -31,11 +31,11 @@ class DanieRepository extends EntityRepository {
 	$do = $data->format('Y-m-d 23:59:59');
         $qb = $this->createQueryBuilder('d')
                         ->select('da.data, da.id as dzien_id, d.gram, p.nazwa,
-			 (p.bialka * 100) / d.gram AS bialka,
-			 (p.kalorii * 100) / d.gram AS kalorii,
-			 (p.wegle * 100) / d.gram AS wegle,
-			 (p.tluszcze * 100) / d.gram AS tluszcze,
-			 (p.cena * 100) / d.gram AS cena')
+			 (d.gram / 100) * p.bialka  AS bialka,
+			 (d.gram / 100) * p.kalorii AS kalorii,
+			 (d.gram / 100) * p.wegle AS wegle,
+			 (d.gram / 100) * p.tluszcze AS tluszcze,
+			 (d.gram / 100) * p.cena AS cena')
                         ->join('d.dzien_id', 'da')
 			->leftJoin('d.produkty', 'p');
 	$qb->where('da.data >= :od AND da.data <= :do')

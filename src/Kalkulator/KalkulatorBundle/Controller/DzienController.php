@@ -39,9 +39,6 @@ class DzienController extends Controller {
 	$DzienRepository = $this->getDoctrine()->getRepository('KalkulatorKalkulatorBundle:Danie');
 	$dane = $DzienRepository->getDzien($dzien);
 	$suma = $DzienRepository->getSumaDzien($dzien);
-	
-	//echo '<pre>';
-	//print_r($dane);
 
         return array(
 		'dzien' => $dane,
