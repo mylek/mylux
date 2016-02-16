@@ -8,8 +8,15 @@
 .dodaj-posilek-form input {
     text-align: center;
 }
-.dodaj-posilek-form .chosen-select {
-    width: 200px;
+.dodaj-posilek-form .jq-nowy-produkt {
+	position: relative;
+	top: 23px;
+}
+.dodaj-posilek-form .clockpicker .input-group-addon {
+	padding: 0px 14px;
+}
+.dodaj-posilek-form .select-produkt {
+    margin-right: 2%;
 }
 .dodaj-posilek-form .suma-group .col-sm-1.control-label {
     width: 5%;

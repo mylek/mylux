@@ -90,15 +90,12 @@ class DanieController extends Controller {
 
 	/**
 	* @Route(
-	*      "/danie/edytuj/{id}",
-	*      name="kal_danie_edytuj",
+	*      "/danie/edytuj/{id}--{akcja}",
+	*      name="kal_danie_edytuj"
 	* )
 	* @Template("KalkulatorKalkulatorBundle:Danie:dodaj.html.twig")
 	*/
-	public function aktualizujAction(Request $Request, $id) {
-
-		$params = explode('::',$this->getRequest()->attributes->get('_controller'));
-		echo $params[1];
+	public function aktualizujAction(Request $Request, $id, $akcja) {
 
 		$Repo = $this->getDoctrine()->getRepository('KalkulatorKalkulatorBundle:Dzien');
         	$dzien = $Repo->find($id);
@@ -120,14 +117,22 @@ class DanieController extends Controller {
 			if (!empty($postData) && !empty($postData['produkt'])) {
 				$em = $this->getDoctrine()->getManager();
 				$dzienObj = $this->getDoctrine()->getRepository('KalkulatorKalkulatorBundle:Dzien');
-			        $dzienObj = $dzienObj->find($id);
-				$dzienObj->setData(new \DateTime($postData['data'] . ' ' . $postData['time']));
-				$em->persist($dzienObj);
+			        $dzienObj = $dzienObj->find($id);				
 
-				// usuwa aktualne produkty
-				foreach ($dzienObj->getDania() as $danie) {
-				    $em->remove($danie);
+				if($akcja == 'kopiuj') {
+					// zapis kopie dnia
+					$dzienObj = new \Kalkulator\KalkulatorBundle\Entity\Dzien();
+					$dzienObj->setUser($this->getUser());
+					$dzienObj->setData(new \DateTime($postData['data'] . ' ' . $postData['time']));
+				} else{
+					// Edycja
+					$dzienObj->setData(new \DateTime($postData['data'] . ' ' . $postData['time']));
+					// usuwa aktualne produkty
+					foreach ($dzienObj->getDania() as $danie) {
+					    $em->remove($danie);
+					}
 				}
+				$em->persist($dzienObj);
 			        $em->flush();
 
 				// zapisz produktów odnowa
