@@ -63,16 +63,16 @@
                 </div>
             </div>
             <div class="row">
-		<div class="col-sm-4" id="dzien">
+		<div class="col-sm-3" id="dzien">
 		    <div class="form-group">
 		            <label for="data" class="control-label">Data posiłku</label>
-		            <div class="input-group date col-sm-11">
+		            <div class="input-group date col-sm-10">
 		                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
 				<input type="text" class="form-control" value="{{ dzien }}" name="data">
 		            </div>
 		    </div>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-2">
 			<div class="form-group">
 				<label for="data" class="control-label">Godzina posiłku</label>
 				    <div class="input-group clockpicker" data-autoclose="true">
@@ -86,13 +86,14 @@
             </div>
             <div class="hr-line-dashed"></div>
             <div>
+				<div>
 		{% if dania is defined %}
 		{% if dania is not empty %}
 			{% for danie in dania %}
 
-				<div class="row">
-				    <div class="col-sm-4 select-produkt">
-					<div class="form-group">
+				<div class="row row-produkt">
+				    <div class="col-xs-6">
+					<div class="form-group select-produkt">
 					    	<label for="data" class="control-label">Wybierz produkt</label>
 					   	<select class="chosen-select form-control m-b" name="produkt[]" tabindex="2">
 							<option value="0"> -- wybierz --- </option>
@@ -102,7 +103,7 @@
 					    	</select>
 					</div>
 				    </div>
-				    <div class="col-sm-2">
+				    <div class="col-xs-4">
 					<div class="form-group">
 				            <label for="data" class="control-label">Gram</label>
 				            <input type="text" name="gram[]" class="form-control jq-sug-wag" value="{{ danie.gram }}" >
@@ -116,35 +117,36 @@
 			{% endfor %}
 		{% endif %}
 		{% endif %}
-                <div class="row">
-		    <div class="col-sm-4 select-produkt">
-			<div class="form-group">
-			    	<label for="data" class="control-label">Wybierz produkt</label>
-		           	<select class="chosen-select form-control m-b" name="produkt[]" tabindex="2">
-		                	<option value="0"> -- wybierz --- </option>
-		                	{% for produkt in produkty %}
-		                    	<option value="{{ produkt.id }}">{{ produkt.nazwa }}</option>
-		                	{% endfor %}
-		            	</select>
+                <div class="row row-produkt">
+					<div class="col-xs-6">
+						<div class="form-group select-produkt">
+							<label for="data" class="control-label">Wybierz produkt</label>
+							<select class="chosen-select form-control m-b" name="produkt[]" tabindex="2">
+									<option value="0"> -- wybierz --- </option>
+									{% for produkt in produkty %}
+										<option value="{{ produkt.id }}">{{ produkt.nazwa }}</option>
+									{% endfor %}
+								</select>
+						</div>
+					</div>
+					<div class="col-xs-4">
+						<div class="form-group">
+							<label for="data" class="control-label">Gram</label>
+							<input type="text" name="gram[]" class="form-control jq-sug-wag"  >
+							<input type="hidden" class="jq-kalorie">
+							<input type="hidden" class="jq-bialko">
+							<input type="hidden" class="jq-wegle">
+							<input type="hidden" class="jq-tluszcze">
+						</div>
+					</div>
+					<div class="col-xs-2">
+						<div class="form-group pull-right">
+							<button type="button" class="btn btn-primary jq-nowy-produkt">+</button>
+						</div>
+					</div>
+				</div>
 			</div>
-                    </div>
-                    <div class="col-sm-2">
-			<div class="form-group">
-                            <label for="data" class="control-label">Gram</label>
-                            <input type="text" name="gram[]" class="form-control jq-sug-wag"  >
-                            <input type="hidden" class="jq-kalorie">
-                            <input type="hidden" class="jq-bialko">
-                            <input type="hidden" class="jq-wegle">
-                            <input type="hidden" class="jq-tluszcze">
-                        </div>
-                    </div>
-                    <div class="col-sm-1">
-                        <div class="form-group pull-right">
-                            <button type="button" class="btn btn-primary jq-nowy-produkt">+</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+			
             <div class="form-group">
                 <div class="col-sm-4">
                     <button class="btn btn-primary" type="submit">Zapisz posiłek</button>

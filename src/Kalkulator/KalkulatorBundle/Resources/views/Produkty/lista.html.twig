@@ -2,7 +2,7 @@
 {% import 'KalkulatorKalkulatorBundle::macros.html.twig' as macros %}
 
 {% set blok %}
-        <table class="table table-bordered">
+        <table class="table table-bordered table-lista-produktow">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -10,8 +10,8 @@
                     <th>Kalorii</th>
                     <th>Białka</th>
                     <th>Węglowodany</th>
-                    <th>Tłuszcze</th>
-                    <th>Cena</th>
+                    <th class="tluszcze">Tłuszcze</th>
+                    <th class="cena">Cena</th>
                     <th></th>
                 </tr>
             </thead>
@@ -23,8 +23,8 @@
                         <td>{{ entry.kalorii }}</td>
                         <td>{{ entry.bialka }}</td>
                         <td>{{ entry.wegle }}</td>
-                        <td>{{ entry.tluszcze }}</td>
-                        <td>{{ entry.cena }} PLN</td>
+                        <td class="tluszcze">{{ entry.tluszcze }}</td>
+                        <td class="cena">{{ entry.cena }} PLN</td>
                         <td>
                                 <a href="{{ path('kal_produkty_aktualizuj', {'id': entry.id}) }}"><i class="fa fa-pencil-square-o"></i></a>
                                 <a href="{{ path('kal_produkty_usun', {'id': entry.id}) }}"><i class="fa fa-times"></i></a>

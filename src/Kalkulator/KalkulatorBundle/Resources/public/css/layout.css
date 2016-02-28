@@ -8,15 +8,8 @@
 .dodaj-posilek-form input {
     text-align: center;
 }
-.dodaj-posilek-form .jq-nowy-produkt {
-	position: relative;
-	top: 23px;
-}
-.dodaj-posilek-form .clockpicker .input-group-addon {
-	padding: 0px 14px;
-}
-.dodaj-posilek-form .select-produkt {
-    margin-right: 2%;
+.dodaj-posilek-form .chosen-select {
+	width: 95%;
 }
 .dodaj-posilek-form .suma-group .col-sm-1.control-label {
     width: 5%;
@@ -31,5 +24,50 @@
 	margin: 0;
 }
 .dzien-podsumowanie .button .btn {
-	margin-right: 5px;
+	
+}
+
+.dodaj-posilek-form .jq-nowy-produkt{
+	position: relative;
+    top: 22px;
+}
+
+.dodaj-posilek-form .form-group.select-produkt {
+	margin: 0;
+}
+
+@media(min-width: 767px) {
+	.dodaj-posilek-form .row-produkt .col-xs-6 {
+		width: 300px;
+	}
+	.dodaj-posilek-form .row-produkt .col-xs-4 {
+		width: 100px;
+	}
+	.dodaj-posilek-form .row-produkt .col-xs-2 {
+		width: 60px;
+	}
+}
+
+@media(max-width: 767px) {
+	.blok-suma-dnia {
+		display: none;
+	}
+	.dzien-podsumowanie .gram,
+	.table-lista-produktow .gram {
+		display: none;
+	}
+	.table-lista-produktow .cena,
+	.dzien-podsumowanie .cena {
+		display: none;
+	}
+	.table-lista-produktow .tluszcze {
+		display: none;
+	}
+	table.table-lista-produktow th,
+	table.table-lista-produktow td,
+	.dzien-podsumowanie table th,
+	.dzien-podsumowanie table td {
+		padding: 2px;
+		font-size: 8px;
+	}
 }

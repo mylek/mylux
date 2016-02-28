@@ -14,9 +14,9 @@ class DanieRepository extends EntityRepository {
 		                ->select('
 				 SUM((d.gram / 100) * p.bialka) AS bialka,
 				 SUM((d.gram / 100) * p.kalorii) AS kalorii,
-				 SUM((d.gram / 100) / p.wegle) AS wegle,
-				 SUM((d.gram / 100 / p.tluszcze) AS tluszcze,
-				 SUM((d.gram / 100) / p.cena) AS cena')
+				 SUM((d.gram / 100) * p.wegle) AS wegle,
+				 SUM((d.gram / 100) * p.tluszcze) AS tluszcze,
+				 SUM((d.gram / 100) * p.cena) AS cena')
 		                ->join('d.dzien_id', 'da')
 				->leftJoin('d.produkty', 'p');
 		$qb->where('da.data >= :od AND da.data <= :do')

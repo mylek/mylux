@@ -15,7 +15,7 @@ use Kalkulator\KalkulatorBundle\Entity\Produkt;
  */
 class ProduktyController extends Controller {
     
-    protected $limit = 3;
+    protected $limit = 10;
     
     /**
     * @Route(

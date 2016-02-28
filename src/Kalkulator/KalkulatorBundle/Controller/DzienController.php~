@@ -36,12 +36,12 @@ class DzienController extends Controller {
 
 	$dzien = new \DateTime($dzien);	
 
-	$DzienRepository = $this->getDoctrine()->getRepository('KalkulatorKalkulatorBundle:Danie');
+	$DzienRepository = $this->getDoctrine()->getRepository('KalkulatorKalkulatorBundle:Dzien');
 	$dane = $DzienRepository->getDzien($dzien);
 	$suma = $DzienRepository->getSumaDzien($dzien);
 	
-	echo '<pre>';
-	print_r($dane);
+	//echo '<pre>';
+	//print_r($dane);
 
         return array(
 		'dzien' => $dane,
